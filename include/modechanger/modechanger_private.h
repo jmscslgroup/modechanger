@@ -1,15 +1,15 @@
 /*
- * modeChanger_private.h
+ * modechanger_private.h
  *
  * Academic License - for use in teaching, academic research, and meeting
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * Code generation for model "modeChanger".
+ * Code generation for model "modechanger".
  *
- * Model version              : 1.41
- * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C++ source code generated on : Tue Sep 22 09:39:19 2020
+ * Model version              : 6.1
+ * Simulink Coder version : 9.8 (R2022b) 13-May-2022
+ * C++ source code generated on : Tue Nov 26 17:27:31 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -18,8 +18,9 @@
  * Validation result: Not run
  */
 
-#ifndef RTW_HEADER_modeChanger_private_h_
-#define RTW_HEADER_modeChanger_private_h_
+#ifndef RTW_HEADER_modechanger_private_h_
+#define RTW_HEADER_modechanger_private_h_
 #include "rtwtypes.h"
 #include "multiword_types.h"
-#endif                                 /* RTW_HEADER_modeChanger_private_h_ */
+#include "modechanger_types.h"
+#endif                                 /* RTW_HEADER_modechanger_private_h_ */

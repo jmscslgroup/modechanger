@@ -5,11 +5,11 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * Code generation for model "modeChanger".
+ * Code generation for model "modechanger".
  *
- * Model version              : 1.41
- * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C++ source code generated on : Tue Sep 22 09:39:19 2020
+ * Model version              : 6.1
+ * Simulink Coder version : 9.8 (R2022b) 13-May-2022
+ * C++ source code generated on : Tue Nov 26 17:27:31 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -21,9 +21,8 @@
 #ifndef RTWTYPES_H
 #define RTWTYPES_H
 #include "tmwtypes.h"
-#include "simstruc_types.h"
 #ifndef POINTER_T
-# define POINTER_T
+#define POINTER_T
 
 typedef void * pointer_T;
 
@@ -31,12 +30,12 @@ typedef void * pointer_T;
 
 /* Logical type definitions */
 #if (!defined(__cplusplus))
-#  ifndef false
-#   define false                       (0U)
-#  endif
+#ifndef false
+#define false                          (0U)
+#endif
 
-#  ifndef true
-#   define true                        (1U)
-#  endif
+#ifndef true
+#define true                           (1U)
+#endif
 #endif
 #endif                                 /* RTWTYPES_H */

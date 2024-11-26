@@ -1,4 +1,4 @@
-/* Copyright 2014-2018 The MathWorks, Inc. */
+/* Copyright 2014-2021 The MathWorks, Inc. */
 
 #ifndef _SLROS_GENERIC_PUBSUB_H_
 #define _SLROS_GENERIC_PUBSUB_H_
@@ -29,6 +29,7 @@ class SimulinkSubscriber {
     ros::Subscriber _subscriber;
     bool _newMessageReceived;
     boost::shared_ptr<MsgType const> _lastMsgPtr;
+    boost::mutex _mtx;
 };
 
 /**
@@ -40,6 +41,7 @@ class SimulinkSubscriber {
 template <class MsgType, class BusType>
 void SimulinkSubscriber<MsgType, BusType>::subscriberCallback(
     const boost::shared_ptr<MsgType const>& msgPtr) {
+    boost::lock_guard<boost::mutex> lockMsg(_mtx);
     _lastMsgPtr = msgPtr; // copy the shared_ptr
     _newMessageReceived = true;
 }
@@ -76,6 +78,7 @@ bool SimulinkSubscriber<MsgType, BusType>::getLatestMessage(BusType* busPtr) {
     _customCallbackQueuePtr->callOne();
 
     if (_newMessageReceived) {
+        boost::lock_guard<boost::mutex> lockMsg(_mtx);
         convertToBus(busPtr, _lastMsgPtr.get());
         _newMessageReceived = false;
         return true; // message is new
@@ -128,5 +131,52 @@ void SimulinkPublisher<MsgType, BusType>::publish(BusType* busPtr) {
     convertFromBus(&_msg, busPtr);
     _publisher.publish(_msg);
 }
+
+#ifdef _SL_ROS_CONTROL_PLUGIN_
+#include <realtime_tools/realtime_publisher.h>
+
+/**
+ * Class for publishing realtime ROS messages in C++.
+ *
+ * This class is used by code ros_control controller package
+ * generated from the Simulink ROS publisher blocks and is templatized by
+ * the ROS message type and Simulink bus type.
+ */
+template <class MsgType, class BusType>
+class SimulinkRTPublisher {
+  public:
+    void createPublisher(std::string const& topic, uint32_t queueSize);
+    void publish(BusType* busPtr);
+
+  private:
+    realtime_tools::RealtimePublisher<MsgType> _publisher; /// Realtime publisher object
+};
+
+/**
+ * Initialize the realtime publisher
+ *
+ * @param topic The name of the topic to advertise
+ * @param queueSize The length of outgoing publishing message queue
+ */
+template <class MsgType, class BusType>
+void SimulinkRTPublisher<MsgType, BusType>::createPublisher(std::string const& topic,
+                                                            uint32_t queueSize) {
+    _publisher.init(*SLROSNodePtr, topic, queueSize);
+}
+
+/**
+ * Convert from bus and publish the message
+ *
+ * @param busPtr Pointer to the bus structure for the outgoing message
+ */
+template <class MsgType, class BusType>
+void SimulinkRTPublisher<MsgType, BusType>::publish(BusType* busPtr) {
+    if (_publisher.trylock()) {
+        convertFromBus(&_publisher.msg_, busPtr);
+        _publisher.unlockAndPublish();
+    }
+}
+#endif
+
 
 #endif
