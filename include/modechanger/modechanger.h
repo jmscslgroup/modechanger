@@ -7,9 +7,9 @@
  *
  * Code generation for model "modechanger".
  *
- * Model version              : 6.1
+ * Model version              : 6.3
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C++ source code generated on : Tue Nov 26 17:27:31 2024
+ * C++ source code generated on : Tue Nov 26 17:52:44 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -49,7 +49,7 @@ struct DW_modechanger_T {
   ros_slros_internal_block_GetP_T obj; /* '<Root>/waitTime' */
   ros_slros_internal_block_GetP_T obj_d;/* '<Root>/lowDurationParam' */
   ros_slros_internal_block_GetP_T obj_f;/* '<Root>/highDurationParam' */
-  ros_slroscpp_internal_block_P_T obj_n;/* '<S2>/SinkBlock' */
+  ros_slroscpp_internal_block_P_T obj_m;/* '<S2>/SinkBlock' */
   ros_slroscpp_internal_block_S_T obj_dw;/* '<S3>/SourceBlock' */
   uint32_T temporalCounter_i1;         /* '<Root>/Chart' */
   uint8_T is_c3_modechanger;           /* '<Root>/Chart' */
@@ -58,7 +58,7 @@ struct DW_modechanger_T {
   boolean_T objisempty_j;              /* '<Root>/lowDurationParam' */
   boolean_T objisempty_p;              /* '<Root>/highDurationParam' */
   boolean_T objisempty_jw;             /* '<S3>/SourceBlock' */
-  boolean_T objisempty_k;              /* '<S2>/SinkBlock' */
+  boolean_T objisempty_l;              /* '<S2>/SinkBlock' */
 };
 
 /* Parameters (default storage) */

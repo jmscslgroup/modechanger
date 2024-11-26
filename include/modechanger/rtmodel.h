@@ -4,7 +4,7 @@
  * Code generation for Simulink model "modechanger".
  *
  * Simulink Coder version                : 9.8 (R2022b) 13-May-2022
- * C++ source code generated on : Tue Nov 26 17:27:31 2024
+ * C++ source code generated on : Tue Nov 26 17:52:44 2024
  *
  * Note that the generated code is not dependent on this header file.
  * The file is used in cojuction with the automatic build procedure.

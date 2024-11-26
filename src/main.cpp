@@ -3,9 +3,9 @@
 //
 // Code generated for Simulink model 'modechanger'.
 //
-// Model version                  : 6.1
+// Model version                  : 6.3
 // Simulink Coder version         : 9.8 (R2022b) 13-May-2022
-// C/C++ source code generated on : Tue Nov 26 17:27:40 2024
+// C/C++ source code generated on : Tue Nov 26 17:52:53 2024
 //
 
 #include <stdio.h>

@@ -7,9 +7,9 @@
  *
  * Code generation for model "modechanger".
  *
- * Model version              : 6.1
+ * Model version              : 6.3
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C++ source code generated on : Tue Nov 26 17:27:31 2024
+ * C++ source code generated on : Tue Nov 26 17:52:44 2024
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -217,7 +217,7 @@ void modechanger_step(void)
 
   /* Outputs for Atomic SubSystem: '<Root>/Publish' */
   /* MATLABSystem: '<S2>/SinkBlock' */
-  Pub_modechanger_36.publish(&rtb_BusAssignment);
+  Pub_modechanger_66.publish(&rtb_BusAssignment);
 
   /* End of Outputs for SubSystem: '<Root>/Publish' */
 }
@@ -313,7 +313,7 @@ void modechanger_initialize(void)
     }
 
     b_zeroDelimTopic[10] = '\x00';
-    Sub_modechanger_49.createSubscriber(&b_zeroDelimTopic[0], 1);
+    Sub_modechanger_49.createSubscriber(&b_zeroDelimTopic[0], 10);
     modechanger_DW.obj_dw.isSetupComplete = true;
 
     /* End of Start for MATLABSystem: '<S3>/SourceBlock' */
@@ -321,16 +321,16 @@ void modechanger_initialize(void)
 
     /* Start for Atomic SubSystem: '<Root>/Publish' */
     /* Start for MATLABSystem: '<S2>/SinkBlock' */
-    modechanger_DW.obj_n.matlabCodegenIsDeleted = false;
-    modechanger_DW.objisempty_k = true;
-    modechanger_DW.obj_n.isInitialized = 1;
+    modechanger_DW.obj_m.matlabCodegenIsDeleted = false;
+    modechanger_DW.objisempty_l = true;
+    modechanger_DW.obj_m.isInitialized = 1;
     for (int32_T i = 0; i < 12; i++) {
       b_zeroDelimName[i] = tmp_3[i];
     }
 
     b_zeroDelimName[12] = '\x00';
-    Pub_modechanger_36.createPublisher(&b_zeroDelimName[0], 1);
-    modechanger_DW.obj_n.isSetupComplete = true;
+    Pub_modechanger_66.createPublisher(&b_zeroDelimName[0], 1);
+    modechanger_DW.obj_m.isSetupComplete = true;
 
     /* End of Start for MATLABSystem: '<S2>/SinkBlock' */
     /* End of Start for SubSystem: '<Root>/Publish' */
@@ -389,8 +389,8 @@ void modechanger_terminate(void)
 
   /* Terminate for Atomic SubSystem: '<Root>/Publish' */
   /* Terminate for MATLABSystem: '<S2>/SinkBlock' */
-  if (!modechanger_DW.obj_n.matlabCodegenIsDeleted) {
-    modechanger_DW.obj_n.matlabCodegenIsDeleted = true;
+  if (!modechanger_DW.obj_m.matlabCodegenIsDeleted) {
+    modechanger_DW.obj_m.matlabCodegenIsDeleted = true;
   }
 
   /* End of Terminate for MATLABSystem: '<S2>/SinkBlock' */
